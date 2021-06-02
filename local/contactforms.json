@@ -1,0 +1,197 @@
+[
+  {
+    "_id": {
+      "$oid": "605db7416ae48651d46bf645"
+    },
+    "createdAt": {
+      "$date": "2021-03-26T10:27:56.970Z"
+    },
+    "subject": "sara",
+    "category": "healloo",
+    "contactInfo": "sladælaskældfk",
+    "message": "asækljdlaSKdlæk",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "605dc16b6ae48651d46bf646"
+    },
+    "createdAt": {
+      "$date": "2021-03-26T10:27:56.970Z"
+    },
+    "subject": "Hello",
+    "category": "Jaha",
+    "contactInfo": "Hihi",
+    "message": "Langt meddelende om hvor sød CHansen er.",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "605ddb786ae48651d46bf647"
+    },
+    "createdAt": {
+      "$date": "2021-03-26T10:27:56.970Z"
+    },
+    "subject": "Jaha du ",
+    "category": "Lala",
+    "contactInfo": "Chasldalskd",
+    "message": "askjdkasjdk",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "605dde8c6ae48651d46bf648"
+    },
+    "createdAt": {
+      "$date": "2021-03-26T10:27:56.970Z"
+    },
+    "subject": "Now it should reset",
+    "category": "Fixincode",
+    "contactInfo": "fix@fix.se",
+    "message": "LALALALLA",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6060d887017ba220683e6cdb"
+    },
+    "createdAt": {
+      "$date": "2021-03-28T10:39:58.447Z"
+    },
+    "subject": "Jaha du",
+    "category": "lala",
+    "contactInfo": "lili",
+    "message": "mimi",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "606dc9ba51f59000226c02ba"
+    },
+    "createdAt": {
+      "$date": "2021-04-07T15:03:20.300Z"
+    },
+    "subject": "lala",
+    "category": "hihi",
+    "contactInfo": "wool",
+    "message": "alsdölaksdlkas",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "606ea3c88c57910022bb0abd"
+    },
+    "createdAt": {
+      "$date": "2021-04-08T05:53:50.433Z"
+    },
+    "subject": "",
+    "category": "",
+    "contactInfo": "",
+    "message": "",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "606f09867e9f3500227d4824"
+    },
+    "createdAt": {
+      "$date": "2021-04-08T13:47:48.358Z"
+    },
+    "subject": "LoL",
+    "category": "Lots of Love",
+    "contactInfo": "Sara",
+    "message": "Från mitt hjärta till ditt, LoL",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6079284a7c96130022eaf243"
+    },
+    "createdAt": {
+      "$date": "2021-04-16T05:57:44.125Z"
+    },
+    "subject": "lala",
+    "category": "hoho",
+    "contactInfo": "mama",
+    "message": "jaja",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6093dc8f54173e002279c1ba"
+    },
+    "createdAt": {
+      "$date": "2021-05-06T12:09:48.923Z"
+    },
+    "subject": "Christoffer",
+    "category": "Arkitektur",
+    "contactInfo": "Hello@chansen.design",
+    "message": "ASDASLFJLAd saldk sakld lkasldk lkasd klaklsd lkaskld lkaskld ",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6093ddfc54173e002279c1bb"
+    },
+    "createdAt": {
+      "$date": "2021-05-06T12:09:48.923Z"
+    },
+    "subject": "",
+    "category": "",
+    "contactInfo": "",
+    "message": "",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6093deb254173e002279c1bc"
+    },
+    "createdAt": {
+      "$date": "2021-05-06T12:09:48.923Z"
+    },
+    "subject": "",
+    "category": "",
+    "contactInfo": "",
+    "message": "",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6093df3c54173e002279c1bd"
+    },
+    "createdAt": {
+      "$date": "2021-05-06T12:09:48.923Z"
+    },
+    "subject": "Christoffer",
+    "category": "",
+    "contactInfo": "",
+    "message": "",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6093e1c654173e002279c1be"
+    },
+    "createdAt": {
+      "$date": "2021-05-06T12:09:48.923Z"
+    },
+    "subject": "Shalahoopa",
+    "category": "",
+    "contactInfo": "",
+    "message": "Hello i would like to ",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "609407e686bf8f002245274f"
+    },
+    "createdAt": {
+      "$date": "2021-05-06T15:14:45.124Z"
+    },
+    "subject": "Christoffer",
+    "category": "Hansen",
+    "contactInfo": "blabla",
+    "message": "Jag vill pussa dig",
+    "__v": 0
+  }
+]

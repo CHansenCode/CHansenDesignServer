@@ -7,6 +7,7 @@ import cors from "cors";
 import archProjectRoutes from "./mcr/archProject.routes.js";
 import contactRoutes from "./mcr/contactForm.routes.js";
 import galleryRoutes from "./mcr/gallery.routes.js";
+import projectPlanRoutes from "./mcr/projectPlan.routes.js";
 
 const app = express();
 dotenv.config();
@@ -18,6 +19,7 @@ app.use(cors());
 app.use("/archProjects", archProjectRoutes);
 app.use("/contact", contactRoutes);
 app.use("/gallery", galleryRoutes);
+app.use("/projectPlan", projectPlanRoutes);
 
 app.get("/", (req, res) => {
   res.send("Server: ChansenDesign, up and running");

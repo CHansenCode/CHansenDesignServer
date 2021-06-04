@@ -14,13 +14,12 @@ const gallerySchema = mongoose.Schema({
   stage: { type: String, default: "investigative" }, //OPTIONS: "investigative", "proposal", "progress" or "final"
   stageType: { type: String, default: "drawing" }, //OPTIONS: "measuring", "conceptual", "proposal", "progress" or "final"
   drawingType: String, // "sitemap", "section", "plan", "elevation", "axonometric" etc.. (archetypes)
-  tags: Array,
+  tags: Array, // webdev: "javascript" "MERN" "react" etc... architecture: "elevation" "graphical" "photoshop" etc...
 
   //FILE data for routing
   fileName: String, // "fileName.jpg/png"
   url: String, // "https://media.chansen.design/category/project/fileName.jpg"
   thumbnail: String, // "https://media.chansen.design/category/project/thumbnail/fileName.jpg"
-  alt: String, //ex. "ishallen architecture chansen design..."
 
   //ARCHIVAL data for db
   createdAt: {

@@ -42,8 +42,23 @@ export const createGalleryPost = async (req, res) => {
 
 export const updateGalleryPost = async (req, res) => {
   const { id } = req.params;
-  const { title, subtitle, tags, heroImage, galleryThumbnail, description } =
-    req.body;
+  const {
+    title,
+    subtitle,
+    description,
+    alt,
+    category,
+    project,
+    stage,
+    stageType,
+    drawingType,
+    tags,
+    fileName,
+    url,
+    thumbnail,
+    createdAt,
+    createdBy,
+  } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No project with id: ${id}`);
@@ -51,13 +66,19 @@ export const updateGalleryPost = async (req, res) => {
   const updatedProject = {
     title,
     subtitle,
+    description,
     alt,
     category,
     project,
-    description,
+    stage,
+    stageType,
+    drawingType,
+    tags,
+    fileName,
     url,
     thumbnail,
     createdAt,
+    createdBy,
     _id: id,
   };
 

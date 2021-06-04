@@ -1,19 +1,35 @@
 import mongoose from "mongoose";
 
 const gallerySchema = mongoose.Schema({
+  //VIEW
   title: String,
   subtitle: String,
+  description: String,
+
+  //SEO
   alt: String,
+
+  //FILTERS
   category: String,
   project: String,
   stage: String,
-  description: String,
+  stageType: String,
+  drawingType: String,
+  tags: Array,
+
+  //FILE
+  fileName: String,
   url: String,
   thumbnail: String,
-  file: String,
+
+  //ARCHIVALS
   createdAt: {
     type: Date,
     default: new Date(),
+  },
+  createdBy: {
+    type: String,
+    default: "CHansen",
   },
 });
 

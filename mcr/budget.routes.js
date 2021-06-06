@@ -5,7 +5,7 @@ import {
   createBudgetPost,
   updateBudgetPost,
   deleteBudgetPost,
-} from "./archProject.contr.js";
+} from "./budget.contr.js";
 
 const router = express.Router();
 

@@ -5,6 +5,8 @@ const gallerySchema = mongoose.Schema({
   title: String,
   subtitle: String,
   description: String,
+  scale: Number,
+  northRotation: { type: Number, min: 0, max: 360 },
 
   //SEO
   alt: String,

@@ -28,6 +28,18 @@ export const createBudgetPost = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+//UPDATE
+export const getBudgetPost = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const budgetPost = await Budget.findById(id);
+
+    res.status(200).json(budgetPost);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 //DELETE
 export const deleteBudgetPost = async (req, res) => {
   const { id } = req.params;

@@ -9,6 +9,7 @@ import contactRoutes from "./mcr/contactForm.routes.js";
 import galleryRoutes from "./mcr/gallery.routes.js";
 import projectPlanRoutes from "./mcr/projectPlan.routes.js";
 import budgetRoutes from "./mcr/budget.routes.js";
+import userRoutes from "./mcr/users.routes.js";
 
 const app = express();
 dotenv.config();
@@ -23,6 +24,7 @@ app.use("/contact", contactRoutes);
 app.use("/gallery", galleryRoutes);
 app.use("/projectPlan", projectPlanRoutes);
 app.use("/budget", budgetRoutes);
+app.use("/users", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Server: ChansenDesign, up and running");

@@ -13,9 +13,9 @@ import {
 
 const router = express.Router();
 
-router.get("/", getUsers);
+router.get("/", verifyToken, getUsers);
 router.post("/", registerUser);
-router.post("/login", verifyToken, authUser);
+router.post("/login", authUser);
 
 //NOT CONFIGURED YET
 router.get("/:id", getUser);

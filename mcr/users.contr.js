@@ -41,16 +41,22 @@ export const authUser = async (req, res) => {
   } catch (err) {
     return res.status(400).send(err.details[0].message);
   }
+
   //userExist
   const user = await Users.findOne({ username: req.body.username });
   if (!user) return res.status(400).send("Username cannot be found");
+
   //HashCheck
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send("Invalid password");
 
   //JsonWebToken
   const token = jsonwebtoken.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.header("auth-token", token).send(token);
+  res.header("auth-token", token).send({
+    username: user.username,
+    token: token,
+    logTime: new Date(),
+  });
 };
 
 export const registerUser = async (req, res) => {

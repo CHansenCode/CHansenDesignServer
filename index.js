@@ -10,6 +10,7 @@ import galleryRoutes from "./mcr/gallery.routes.js";
 import projectPlanRoutes from "./mcr/projectPlan.routes.js";
 import budgetRoutes from "./mcr/budget.routes.js";
 import userRoutes from "./mcr/users.routes.js";
+import chatsRoutes from "./mcr/chats.routes.js";
 
 const app = express();
 dotenv.config();
@@ -19,12 +20,14 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
+//Routes
 app.use("/archProjects", archProjectRoutes);
 app.use("/contact", contactRoutes);
 app.use("/gallery", galleryRoutes);
 app.use("/projectPlan", projectPlanRoutes);
 app.use("/budget", budgetRoutes);
 app.use("/users", userRoutes);
+app.use("/chat", chatsRoutes);
 
 app.get("/", (req, res) => {
   res.send("Server: ChansenDesign, up and running");

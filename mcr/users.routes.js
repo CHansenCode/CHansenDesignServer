@@ -1,6 +1,6 @@
 import express from "express";
 // import verifyToken from "../verifyToken";
-import verifyToken from "../verifyToken.js";
+import verifyToken from "../token/verifyToken.js";
 
 import {
   getUsers,

@@ -5,6 +5,7 @@ import verifyToken from "../token/verifyToken.js";
 import {
   getUsers,
   getUser,
+  getUserList,
   registerUser,
   authUser,
   updateUser,
@@ -13,10 +14,10 @@ import {
 
 const router = express.Router();
 
-router.get("/", verifyToken, getUsers);
+router.get("/", getUsers);
+router.get("/list", getUserList);
 router.post("/", registerUser);
 router.post("/login", authUser);
-
 //NOT CONFIGURED YET
 router.get("/:id", getUser);
 router.patch("/:id", updateUser);

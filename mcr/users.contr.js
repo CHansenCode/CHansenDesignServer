@@ -30,6 +30,14 @@ export const getUser = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+export const getUserList = async (req, res) => {
+  try {
+    const simplifiedList = await Users.find({}).select("username");
+    res.status(200).json(simplifiedList);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
 //LOGIN
 export const authUser = async (req, res) => {

@@ -59,9 +59,11 @@ export const authUser = async (req, res) => {
   if (!validPass) return res.status(400).send("Invalid password");
 
   //JsonWebToken
-  const token = jsonwebtoken.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  const token = jsonwebtoken.sign(
+    { _id: user._id, username: user.username },
+    process.env.TOKEN_SECRET
+  );
   res.header("auth-token", token).send({
-    username: user.username,
     token: token,
     logTime: new Date(),
   });

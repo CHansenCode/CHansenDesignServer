@@ -1,17 +1,11 @@
 import express from "express";
 
-import {
-  getAllChats,
-  getMyChats,
-  postToChat,
-  createChat,
-} from "./chats.contr.js";
+import { getMyChats, postToChat, createChat } from "./chats.contr.js";
 
 const router = express.Router();
 
 //GET
-router.get("/:id", getMyChats);
-router.get("/", getAllChats);
+router.get("/", getMyChats);
 
 //POST
 router.post("/create", createChat);

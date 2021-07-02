@@ -8,18 +8,10 @@ import Chats from "./chats.model.js";
 const model = Chats;
 
 //FETCH
-export const getAllChats = async (req, res) => {
-  const posts = await model.find();
-  try {
-    res.status(201).json(posts);
-  } catch (error) {
-    res.status(401).json({ message: error.message });
-  }
-};
 export const getMyChats = async (req, res) => {
-  const usersArray = req.body.users;
+  const userString = req.body;
 
-  const chats = await model.find({ users: { $all: usersArray } });
+  const chats = await model.find({ users: { $elemMatch: userString } });
 
   try {
     res.status(201).json(chats);
@@ -29,20 +21,6 @@ export const getMyChats = async (req, res) => {
 };
 
 //POST
-export const postToChat = async (req, res) => {
-  const message = req.body;
-  const id = req.params.id;
-
-  try {
-    await model.findByIdAndUpdate(id, {
-      $push: { messages: message },
-    });
-
-    res.status(201).json(message);
-  } catch (err) {
-    res.status(409).json({ message: err.message });
-  }
-};
 export const createChat = async (req, res) => {
   const data = req.body;
   const newChat = new model(data);
@@ -50,6 +28,20 @@ export const createChat = async (req, res) => {
   try {
     await newChat.save();
     res.status(201).json(newChat);
+  } catch (err) {
+    res.status(409).json({ message: err.message });
+  }
+};
+
+export const postToChat = async (req, res) => {
+  const message = req.body.message;
+  const id = req.params.id;
+
+  try {
+    await model.findByIdAndUpdate(id, {
+      $push: { messages: message },
+    });
+    res.status(201).json(message);
   } catch (err) {
     res.status(409).json({ message: err.message });
   }

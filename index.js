@@ -27,7 +27,7 @@ app.use("/gallery", galleryRoutes);
 app.use("/projectPlan", projectPlanRoutes);
 app.use("/budget", budgetRoutes);
 app.use("/users", userRoutes);
-app.use("/chat", chatsRoutes);
+app.use("/chats", chatsRoutes);
 
 app.get("/", (req, res) => {
   res.send("Server: ChansenDesign, up and running");

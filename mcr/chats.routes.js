@@ -5,7 +5,7 @@ import { getMyChats, postToChat, createChat } from "./chats.contr.js";
 const router = express.Router();
 
 //GET
-router.get("/", getMyChats);
+router.post("/", getMyChats);
 
 //POST
 router.post("/create", createChat);

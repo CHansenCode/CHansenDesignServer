@@ -66,7 +66,7 @@ export const postToChat = async (req, res) => {
     });
     res.status(201).json(message);
   } catch (err) {
-    res.status(409).json("nope");
+    res.status(409).json(message);
   }
 };
 

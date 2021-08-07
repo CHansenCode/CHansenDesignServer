@@ -12,6 +12,7 @@ import budgetRoutes from "./mcr/budget.routes.js";
 import userRoutes from "./mcr/users.routes.js";
 import chatsRoutes from "./mcr/chats.routes.js";
 import planningRoutes from "./mcr/planningApp.routes.js";
+import textRoutes from "./mcr/text.routes.js";
 
 const app = express();
 dotenv.config();
@@ -30,6 +31,7 @@ app.use("/budget", budgetRoutes);
 app.use("/users", userRoutes);
 app.use("/chats", chatsRoutes);
 app.use("/planning", planningRoutes);
+app.use("/text", textRoutes);
 
 app.get("/", (req, res) => {
   res.send("Server: ChansenDesign, up and running");

@@ -32,7 +32,7 @@ export const updatePlanning = async (req, res) => {
 
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`);
 
-  await PlanningApp.findByIdAndUpdate(id, updatedPlanning, { new: true });
+  await PlanningApp.findByIdAndUpdate(id, updatedPlanning);
 
   res.json("Project succesfully updated");
 };

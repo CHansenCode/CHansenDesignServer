@@ -8,7 +8,7 @@ import Users from "./users.model.js";
 const router = express.Router();
 
 //Validation
-import { registerValidation, loginValidation } from "./users.valid.js";
+import { registerValidation } from "./users.valid.js";
 
 export const getUsers = async (req, res) => {
   try {
@@ -59,10 +59,7 @@ export const authUser = async (req, res) => {
   if (!validPass) return res.status(400).send("Invalid password");
 
   //JsonWebToken
-  const token = jsonwebtoken.sign(
-    { _id: user._id, username: user.username },
-    process.env.TOKEN_SECRET
-  );
+  const token = jsonwebtoken.sign({ _id: user._id, username: user.username }, process.env.TOKEN_SECRET);
   res.header("auth-token", token).send({
     token: token,
     logTime: new Date(),
@@ -104,8 +101,7 @@ export const updateUser = async (req, res) => {
   const { id } = req.params;
   const { username, password, email } = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No project with id: ${id}`);
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`);
 
   const updatedUser = {
     username,
@@ -123,8 +119,7 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No user with id: ${id}`);
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with id: ${id}`);
 
   await Users.findByIdAndRemove(id);
 

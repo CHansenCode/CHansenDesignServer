@@ -1,10 +1,6 @@
 import express from "express";
 
-import {
-  getContactMessages,
-  createContactMessage,
-  deleteContactMessage,
-} from "./contactForm.contr.js";
+import { getContactMessages, createContactMessage, deleteContactMessage } from "./contact.contr.js";
 
 const router = express.Router();
 

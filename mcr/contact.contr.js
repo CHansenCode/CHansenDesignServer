@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import ContactForm from "./contactForm.model.js";
+import ContactForm from "./contact.model.js";
 
 const router = express.Router();
 
@@ -33,8 +33,7 @@ export const createContactMessage = async (req, res) => {
 export const deleteContactMessage = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No post with id: ${id}`);
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
   await contactMessage.findByIdAndRemove(id);
 

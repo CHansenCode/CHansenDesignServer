@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import Gallery from "./gallery.model.js";
+import Gallery from "./media.model.js";
 
 const router = express.Router();
 

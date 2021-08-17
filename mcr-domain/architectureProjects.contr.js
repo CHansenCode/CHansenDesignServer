@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import ArchProject from "./archProject.model.js";
+import architectureProjects from "./architectureProjects.model.js";
 
 const router = express.Router();
 
@@ -42,11 +42,9 @@ export const createArchProject = async (req, res) => {
 
 export const updateArchProject = async (req, res) => {
   const { id } = req.params;
-  const { title, subtitle, tags, heroImage, galleryThumbnail, description } =
-    req.body;
+  const { title, subtitle, tags, heroImage, galleryThumbnail, description } = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No project with id: ${id}`);
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`);
 
   const updatedProject = {
     title,
@@ -66,8 +64,7 @@ export const updateArchProject = async (req, res) => {
 export const deleteArchProject = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No post with id: ${id}`);
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
   await archProject.findByIdAndRemove(id);
 

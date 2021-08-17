@@ -4,7 +4,7 @@ import express from "express";
 const router = express.Router();
 
 //MODEL
-import Chats from "./chats.model.js";
+import Chats from "./intercom.model.js";
 const model = Chats;
 
 //FETCH

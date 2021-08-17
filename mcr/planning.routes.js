@@ -1,6 +1,6 @@
 import express from "express";
 
-import { getPlannings, updatePlanning, deletePlanning, createPlanning } from "./planningApp.contr.js";
+import { getPlannings, updatePlanning, deletePlanning, createPlanning } from "./planning.contr.js";
 
 const router = express.Router();
 

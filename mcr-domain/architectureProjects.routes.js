@@ -6,7 +6,7 @@ import {
   createArchProject,
   updateArchProject,
   deleteArchProject,
-} from "./archProject.contr.js";
+} from "./architectureProjects.contr.js";
 
 const router = express.Router();
 

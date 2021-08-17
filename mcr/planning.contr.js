@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import PlanningApp from "./planningApp.model.js";
+import PlanningApp from "./planning.model.js";
 
 const router = express.Router();
 

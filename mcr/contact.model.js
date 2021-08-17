@@ -11,10 +11,6 @@ const contactFormSchema = mongoose.Schema({
   },
 });
 
-const ContactForm = mongoose.model(
-  "ContactForm",
-  contactFormSchema,
-  "ContactForm"
-);
+const ContactForm = mongoose.model("ContactForm", contactFormSchema, "ContactForm");
 
 export default ContactForm;

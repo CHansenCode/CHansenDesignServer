@@ -1,6 +1,6 @@
 import express from "express";
 
-import { getMyChats, postToChat, createChat } from "./chats.contr.js";
+import { getMyChats, postToChat, createChat } from "./intercom.contr.js";
 
 const router = express.Router();
 

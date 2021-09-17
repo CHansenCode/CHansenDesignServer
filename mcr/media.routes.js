@@ -1,13 +1,14 @@
 import express from "express";
 
-import { getGallery, getGalleryPost, createGalleryPost, updateGalleryPost, deleteGalleryPost } from "./media.contr.js";
+import { getMedia, getMediaPost, createMediaPost, updateMediaPost, deleteMediaPost } from "./media.contr.js";
+import verifyToken from "../util/verifyToken.js";
 
 const router = express.Router();
 
-router.get("/", getGallery);
-router.post("/", createGalleryPost);
-router.get("/:id", getGalleryPost);
-router.patch("/:id", updateGalleryPost);
-router.delete("/:id", deleteGalleryPost);
+router.get("/", getMedia);
+router.post("/", verifyToken, createMediaPost);
+router.get("/:id", verifyToken, getMediaPost);
+router.patch("/:id", verifyToken, updateMediaPost);
+router.delete("/:id", verifyToken, deleteMediaPost);
 
 export default router;

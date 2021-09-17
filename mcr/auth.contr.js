@@ -8,22 +8,23 @@ const model = Users;
 
 const router = express.Router();
 
-import { authValidation } from "./auth.valid.js";
+import { login } from "./auth.valid.js";
 
-export const authUser = async (req, res) => {
+export const loginUser = async (req, res) => {
   const userBody = req.body;
 
   //valid
   try {
-    await authValidation.validateAsync(userBody);
+    await login.validateAsync(userBody);
   } catch (err) {
     return res.status(400).send(err.details[0].message);
   }
 
+  //Username-exists?
   const user = await model.findOne({ username: req.body.username });
-  if (!user) return res.status(400).send("Username cannot be found");
+  if (!user) return res.status(400).send("Username can't be found");
 
-  //Password-Check
+  //Password-correct?
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send("Invalid password");
 
@@ -32,6 +33,9 @@ export const authUser = async (req, res) => {
     { _id: user._id, username: user.username, timeCreated: new Date() },
     process.env.TOKEN_SECRET
   );
+
+  await model.findOneAndUpdate({ username: req.body.username }, { activeToken: token });
+
   res.header("auth-token", token).send({
     token: token,
     logTime: new Date(),

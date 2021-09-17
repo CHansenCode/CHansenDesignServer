@@ -3,7 +3,12 @@ import mongoose from "mongoose";
 const textSchema = mongoose.Schema({
   pageTitle: String,
   index: Number,
-  paragraphs: Array,
+  paragraphs: [
+    {
+      title: String,
+      body: String,
+    },
+  ],
 });
 
 const Text = mongoose.model("Text", textSchema, "Texts");

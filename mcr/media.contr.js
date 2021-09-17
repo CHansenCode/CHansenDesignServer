@@ -1,101 +1,73 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import Gallery from "./media.model.js";
+import Media from "./media.model.js";
+const model = Media;
+import { mediaValidation } from "./media.valid.js";
 
 const router = express.Router();
 
-export const getGallery = async (req, res) => {
+export const getMedia = async (req, res) => {
   try {
-    const gallery = await Gallery.find();
-    res.status(200).json(gallery);
+    const resData = await model.find();
+    res.status(200).json(resData);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
-export const getGalleryPost = async (req, res) => {
+export const getMediaPost = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const galleryPost = await Gallery.findById(id);
+    const resData = await model.findById(id);
 
-    res.status(200).json(galleryPost);
+    res.status(200).json(resData);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
-export const createGalleryPost = async (req, res) => {
-  const post = req.body;
-
-  const newGalleryPost = new Gallery(post);
+export const createMediaPost = async (req, res) => {
+  const data = req.body;
+  const newPost = new model(data);
 
   try {
-    await newGalleryPost.save();
+    await mediaValidation.validateAsync(data);
+  } catch (error) {
+    return res.status(400).send(error.details[0].message);
+  }
 
-    res.status(201).json(newGalleryPost);
+  try {
+    await newPost.save();
+
+    res.status(201).json(newPost);
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
 };
 
-export const updateGalleryPost = async (req, res) => {
+export const updateMediaPost = async (req, res) => {
   const { id } = req.params;
-  const {
-    title,
-    subtitle,
-    description,
-    scale,
-    northRotation,
-    alt,
-    category,
-    project,
-    stage,
-    stageType,
-    drawingType,
-    tags,
-    fileName,
-    url,
-    thumbnail,
-    createdAt,
-    createdBy,
-  } = req.body;
+  const reqData = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`);
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-  const updatedProject = {
-    title,
-    subtitle,
-    description,
-    scale,
-    northRotation,
-    alt,
-    category,
-    project,
-    stage,
-    stageType,
-    drawingType,
-    tags,
-    fileName,
-    url,
-    thumbnail,
-    createdAt,
-    createdBy,
-    _id: id,
-  };
+  try {
+    await model.findByIdAndUpdate(id, reqData, { new: true });
 
-  await Gallery.findByIdAndUpdate(id, updatedProject, { new: true });
-
-  res.json(updatedProject);
+    res.json(reqData);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
 };
 
-export const deleteGalleryPost = async (req, res) => {
+export const deleteMediaPost = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-  await Gallery.findByIdAndRemove(id);
+  await model.findByIdAndRemove(id);
 
   res.json({ message: "Project deleted successfully." });
 };

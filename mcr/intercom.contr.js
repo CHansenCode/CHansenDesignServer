@@ -1,42 +1,27 @@
 import express from "express";
+import decodeToken from "../util/decodeToken.js";
 
-//init
 const router = express.Router();
 
-//MODEL
 import Chats from "./intercom.model.js";
 const model = Chats;
 
-//FETCH
 export const getMyChats = async (req, res) => {
-  const usernameObj = req.body;
-  const userString = usernameObj.username;
-
-  if (!userString) {
-    res.status(201).json("Invalid data");
-  } else {
-    const chats = await model.find({ users: { $elemMatch: usernameObj } });
-    try {
-      res.status(201).json(chats);
-    } catch (error) {
-      res.status(401).json({ message: error.message });
-    }
-  }
-};
-
-export const getChatById = async (req, res) => {
-  const { id } = req.params;
+  //
+  const token = req.header("auth-token");
+  const { username } = decodeToken(token);
 
   try {
-    const chat = await model.findById(id);
-    res.status(200).json(chat);
+    const chats = await model.find({ users: { $elemMatch: { username: username } } });
+
+    res.status(201).json(chats);
   } catch (error) {
     res.status(404).json(error);
   }
 };
 
-//POST
 export const createChat = async (req, res) => {
+  //
   const data = req.body;
   const newChat = new model(data);
 
@@ -49,22 +34,28 @@ export const createChat = async (req, res) => {
 };
 
 export const postToChat = async (req, res) => {
-  const message = req.body.message;
+  //
   const id = req.params.id;
+  const token = req.header("auth-token");
+  const { username } = decodeToken(token);
+
+  const newPost = {
+    message: req.body.message,
+    username: username,
+  };
 
   if (!id) {
     res.status(408).json("id missing");
   }
-
-  if (!message) {
-    res.status(401).json("no message body found");
+  if (!req.body.message) {
+    res.status(408).json("No message in body to submit");
   }
 
   try {
     await model.findByIdAndUpdate(id, {
-      $push: { messages: message },
+      $push: { messages: newPost },
     });
-    res.status(201).json(message);
+    res.status(201).json("message succesfully added to chat");
   } catch (err) {
     res.status(409).json(message);
   }

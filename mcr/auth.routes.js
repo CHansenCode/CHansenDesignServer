@@ -1,9 +1,9 @@
 import express from "express";
 
-import { authUser } from "./auth.contr.js";
+import { loginUser } from "./auth.contr.js";
 
 const router = express.Router();
 
-router.post("/", authUser);
+router.post("/", loginUser);
 
 export default router;

@@ -1,15 +1,27 @@
 import express from "express";
 
+import {
+  getTexts,
+  createText,
+  getText,
+  updateText,
+  deleteText,
+  createNewPage,
+  createNewParagraph,
+  deleteParagraph,
+} from "./text.contr.js";
 import verifyToken from "../util/verifyToken.js";
-
-import { getAll, getOneById, createPost, updateOneByID, deleteOneByID } from "./text.contr.js";
 
 const router = express.Router();
 
-router.get("/", getAll);
-router.post("/", createPost);
-router.get("/:id", getOneById);
-router.patch("/:id", updateOneByID);
-router.delete("/:id", deleteOneByID);
+router.get("/", getTexts);
+router.post("/", verifyToken, createText);
+router.get("/:id", verifyToken, getText);
+router.patch("/:id", verifyToken, updateText);
+router.delete("/:id", verifyToken, deleteText);
+
+router.post("/page", createNewPage);
+router.post("/page/:id", createNewParagraph);
+router.delete("/page/:id/:paraid", deleteParagraph);
 
 export default router;

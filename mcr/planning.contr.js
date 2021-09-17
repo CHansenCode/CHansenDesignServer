@@ -2,12 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 
 import PlanningApp from "./planning.model.js";
-
-const router = express.Router();
+const model = PlanningApp;
 
 export const getPlannings = async (req, res) => {
   try {
-    const plannings = await PlanningApp.find();
+    const plannings = await model.find();
     res.status(200).json(plannings);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -16,7 +15,7 @@ export const getPlannings = async (req, res) => {
 
 export const createPlanning = async (req, res) => {
   const planning = req.body;
-  const newPlanningEntry = new PlanningApp(planning);
+  const newPlanningEntry = new model(planning);
 
   try {
     await newPlanningEntry.save();
@@ -32,7 +31,7 @@ export const updatePlanning = async (req, res) => {
 
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`);
 
-  await PlanningApp.findByIdAndUpdate(id, updatedPlanning);
+  await model.findByIdAndUpdate(id, updatedPlanning);
 
   res.json("Project succesfully updated");
 };
@@ -42,7 +41,7 @@ export const deletePlanning = async (req, res) => {
 
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`);
 
-  await PlanningApp.findByIdAndRemove(id);
+  await model.findByIdAndRemove(id);
 
   res.json("Project succesfully deleted");
 };

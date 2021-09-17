@@ -3,28 +3,39 @@ import mongoose from "mongoose";
 const architectureProjectSchema = mongoose.Schema({
   title: String,
   subtitle: String,
+  body: String,
   tags: [String],
-  heroImage: String,
-  galleryThumbnail: String,
+  heroUrl: String,
+  published: false,
+
+  pages: [
+    {
+      title: String,
+      subtitle: String,
+      paragraphs: Array,
+      imgUrl: String,
+    },
+  ],
+  media: [
+    {
+      title: String,
+      description: String,
+      scale: Number,
+      northRotation: { type: Number, min: 0, max: 360 },
+      tags: Array,
+      programs: Array,
+      drawingType: String,
+      url: String,
+    },
+  ],
   createdAt: {
     type: Date,
     default: new Date(),
   },
-  sections: [
-    {
-      drawingType: String,
-      title: String,
-      subtitle: String,
-      body: String,
-      url: String,
-    },
-  ],
-  archiveList: [
-    {
-      drawingType: String,
-      url: String,
-    },
-  ],
+  createdBy: {
+    type: String,
+    default: "CHansen",
+  },
 });
 
 const ArchitectureProject = mongoose.model("ArchitectureProject", architectureProjectSchema, "Architecture Projects");

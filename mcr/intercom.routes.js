@@ -1,14 +1,13 @@
 import express from "express";
 
 import { getMyChats, postToChat, createChat } from "./intercom.contr.js";
+import verifyToken from "../util/verifyToken.js";
 
 const router = express.Router();
 
-//GET
-router.post("/", getMyChats);
+router.get("/", verifyToken, getMyChats);
+router.post("/", verifyToken, createChat);
 
-//POST
-router.post("/create", createChat);
-router.post("/:id", postToChat);
+router.post("/:id", verifyToken, postToChat);
 
 export default router;
